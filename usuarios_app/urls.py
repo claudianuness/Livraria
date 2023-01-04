@@ -10,3 +10,4 @@ urlpatterns = [
     path("logout/", auth_views.LogoutView.as_view(), name="logout"),
     path("registrar/", CriarUsuario.as_view(), name="registrar"),
 ]
+
