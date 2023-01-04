@@ -1,13 +1,13 @@
 from django.views.generic.edit import CreateView
 from django.contrib.auth.models import User
-from .forms import UserForm
+from .forms import UsuarioForm
 from django.urls import reverse_lazy
 
 
 # Create your views here.
 class CriarUsuario(CreateView):
     template_name = 'usuarios_app/form.html'
-    form_class = UserForm
+    form_class = UsuarioForm
     success_url = reverse_lazy('login')
 
     def get_context_data(self, *args, **kwargs):

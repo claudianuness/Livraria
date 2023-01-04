@@ -16,8 +16,10 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from primeira_app import urls as primeira_app_urls
+from usuarios_app import urls as usuarios_app_urls
 
 urlpatterns = [
     path("admin/", admin.site.urls),
+    path("", include(usuarios_app_urls)),
     path("", include(primeira_app_urls)),
 ]
