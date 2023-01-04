@@ -1,22 +1,17 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Listagem</title>
-</head>
-<body>
-<h1>Produtos:</h1>
-    <ul>
-    {% for livro in livros %}
-        <li><a href="{% url 'url_update' livro.id %}">{{livro.titulo}} - {{livro.valor}}</a></li>
+{% extends 'primeira_app/base.html' %}
+
+    {% block content %}
+      <h1>Livros:</h1>
         <ul>
-        {% for autor in livro.autor.all %}
-            <li>{{autor.nome}}</li>
+        {% for livro in livros %}
+            <li><a href="{% url 'url_update' livro.id %}">{{livro.titulo}} - {{livro.valor}}</a></li>
+            <ul>
+            {% for autor in livro.autor.all %}
+                <li>{{autor.nome}}</li>
+                {% endfor %}
+            </ul>
+
             {% endfor %}
         </ul>
-
-        {% endfor %}
-    </ul>
-<a href="{% url 'url_novo' %}"><button type="submit">Adicionar</button></a>
-</body>
-</html>
+    <a href="{% url 'url_novo' %}"><button type="submit">Adicionar</button></a>
+    {% endblock %}
