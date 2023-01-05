@@ -13,6 +13,10 @@ def listagem(request):
     dados = {"livros": Livro.objects.all()}
     return render(request, "primeira_app/listagem.html", dados)
 
+def busca(request):
+    dados = {"livros": Livro.objects.filter(titulo__icontains = 'livro')}
+    return render(request, "primeira_app/busca.html", dados)
+
 
 def criar(request):
     dados = {}
