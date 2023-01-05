@@ -4,10 +4,13 @@
     {% endblock %}
 
 {% block content %}
-    <div>
+    <div >
         <form>
             {% csrf_token %}
             {{ form.as_p }}
+              <button type="submit" class="btn btn-primary"> Salvar </button>
         </form>
+
     </div>
+
     {% endblock %}
