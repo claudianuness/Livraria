@@ -12,5 +12,4 @@ urlpatterns = [
     path("login/", login_view, name="login"),
     path("logout/", auth_views.LogoutView.as_view(), name="logout"),
     path("registrar/", CriarUsuario.as_view(), name="registrar"),
-    path("carrinho/", shopping_items_add, name="carrinho"),
 ]
