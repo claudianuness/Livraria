@@ -56,3 +56,5 @@ def delete(request, pk):
     livro = Livro.objects.get(pk=pk)
     livro.delete()
     return redirect("url_listagem")
+
+
