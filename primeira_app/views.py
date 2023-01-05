@@ -13,6 +13,18 @@ def listagem(request):
     dados = {"livros": Livro.objects.all()}
     return render(request, "primeira_app/listagem.html", dados)
 
+def busca(request):
+
+
+    if 'busca' in request.POST:
+        busca = request.POST['busca']
+        dados = {"busca": busca, "livros": Livro.objects.filter(titulo__icontains=busca)}
+        return render(request, "primeira_app/busca.html", dados)
+    else:
+        return render(request, "primeira_app/busca.html", {})
+
+
+
 
 def criar(request):
     dados = {}

@@ -58,23 +58,27 @@
 {% endblock %}
 
 {% block prominence %}
-<div class="bg-secondary">
-    Livros em ofertas
-</div>
+   <form class="d-flex" method="POST" action="{% url 'url_busca' %}">
+       {% csrf_token %}
+       <input class="" type="search" placeholder="Search" aria-label="Search" name="busca">
+       <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
+   </form>
 {% endblock %}
 
-<div class="container">
+<div class="container" >
     {% block content %}
     <p>contéudo</p>
     {% endblock %}
 </div>
 
 {% block footer %}
+<div style="clear: both; height: 66px;"></div>
 <div class="fixed-bottom bg-light d-flex justify-content-center">
     <p class="pt-3">Desenvolvimento Web Backend - SENAC</p>
 </div>
 {% endblock %}
 <script src="{% static 'js/bootstrap.min.js' %}"></script>
+
 
 </body>
 </html>

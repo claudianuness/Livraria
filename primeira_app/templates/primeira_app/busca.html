@@ -1,3 +1,25 @@
+{% extends 'primeira_app/base.html' %}
+
 {% block title %}
     <title>Busca</title>
 {% endblock %}
+
+{% block content %}
+       {% if busca %}
+        <h1 class="display-3"> Você procurou por {{ busca }} </h1>
+        <h1 class="display-4">Livros:</h1>
+        <ul>
+        {% for livro in livros %}
+            <li><a href="{% url 'url_update' livro.id %}">{{livro.titulo}} - {{livro.valor}}</a></li>
+            <ul>
+            {% for autor in livro.autor.all %}
+                <li>{{autor.nome}}</li>
+                {% endfor %}
+            </ul>
+
+            {% endfor %}
+        </ul>
+    {% else %}
+        <h1 class="display-4"> Faça uma busca </h1>
+    {% endif  %}
+    {% endblock %}
