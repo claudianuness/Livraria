@@ -1,15 +1,22 @@
-from django.views.generic.edit import CreateView
-from django.contrib.auth.models import User
-from .forms import UsuarioForm, CarrinhoForm
+from django.http import HttpResponseRedirect
 from django.urls import reverse_lazy
-from .models import Cliente, Carrinho , Shop
+from django.views.generic.edit import CreateView
+from django.shortcuts import render
+
+from mysite.settings import LOGIN_REDIRECT_URL
+from .forms import UsuarioForm, CarrinhoForm
+from .models import Cliente, Carrinho, Shop
 
 
-# Create your views here.
 class CriarUsuario(CreateView):
     template_name = 'usuarios_app/form.html'
     form_class = UsuarioForm
     success_url = reverse_lazy('login')
+
+    def dispatch(self, request, *args, **kwargs):
+        if self.request.user.is_authenticated:
+            return HttpResponseRedirect(LOGIN_REDIRECT_URL)
+        return super().dispatch(request, *args, **kwargs)
 
     def get_context_data(self, *args, **kwargs):
         context = super().get_context_data(*args, **kwargs)
@@ -18,10 +25,6 @@ class CriarUsuario(CreateView):
         context['bootom'] = 'Register'
         return context
 
-
-from django.shortcuts import render
-
-# Create your views here.
 
 def shopping_items_add(request):
     cliente = Cliente.objects.get(email=request.user.email)
@@ -33,8 +36,9 @@ def shopping_items_add(request):
         form.save()
 
     dados["form"] = form
-    
+
     return render(request, "primeira_app/carrinho_form.html", dados)
+
 
 def cart_items(request, pk):
     template_name = 'cart_items.html'
