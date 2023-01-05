@@ -32,7 +32,12 @@
             {{ form|crispy }}
 
             <button type="submit" class="btn btn-primary">Entrar</button>
-            <button  class="btn btn-primary">Criar um usuário</button>
+            <div><small>Não tem cadastro? <a class="" href="{% url 'url_registrar'%}">cadastre-se</a></small>
+            </div>
+
+            <a class="" href="{% url 'url_registrar'%}">esqueceu a senha?</a>
+
+
 
         </form>
     </div>
