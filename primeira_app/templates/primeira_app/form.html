@@ -1,7 +1,8 @@
 {% extends 'primeira_app/base.html' %}
-    {% block title %}
-        <title>Form</title>
-    {% endblock %}
+    
+{% block title %}
+   <title>Form</title>
+{% endblock %}
 
 {% block content %}
     <div >
@@ -10,7 +11,5 @@
             {{ form.as_p }}
               <button type="submit" class="btn btn-primary"> Salvar </button>
         </form>
-
     </div>
-
     {% endblock %}
