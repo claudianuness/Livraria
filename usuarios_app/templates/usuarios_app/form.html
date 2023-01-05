@@ -17,11 +17,15 @@
 {% block content %}
  <div class="row">
     <div class="col-md-4 mx-auto mt-5">
+
+        <img src="{% static 'img/livro.png' %}" height="100" alt="" >
+
         <h3>Criar conta</h3>
 
             <hr>
         <form method="POST">
 
+            # validação dos dados
             {% csrf_token %}
 
             {{ form|crispy }}
