@@ -16,4 +16,4 @@ class UsuarioForm(UserCreationForm):
 class CarrinhoForm(ModelForm):
     class Meta:
         model = Carrinho
-        fields = ["Produto", "Quantidade"]
+        fields = ["produto", "quantidade"]
