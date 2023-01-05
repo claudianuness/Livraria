@@ -4,10 +4,7 @@ from primeira_app import views
 from .views import CriarUsuario
 
 urlpatterns = [
-    path("login/", auth_views.LoginView.as_view(
-        template_name="usuarios_app/login.html",
-    ), name="login"),
-    path("logout/", auth_views.LogoutView.as_view(), name="logout"),
+    path("login/", auth_views.LoginView.as_view(template_name="usuarios_app/login.html"), name="login"),
     path("logout/", auth_views.LogoutView.as_view(), name="url_logout"),
     path("registrar/", CriarUsuario.as_view(), name="url_registrar"),
 ]
