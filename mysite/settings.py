@@ -41,6 +41,8 @@ INSTALLED_APPS = [
     "primeira_app",
     "usuarios_app",
     "crispy_forms",
+    "django_pagarme",
+    "phonenumber_field",
 ]
 
 # Crispy forms
@@ -138,3 +140,11 @@ LOGIN_REDIRECT_URL = "/"
 LOGOUT_REDIRECT_URL = "login"
 
 LOGIN_URL = "login"
+
+
+# Dados para integração com Pagarme
+CHAVE_PAGARME_API_PRIVADA = 'CHAVE_PAGARME_API_PRIVADA'
+CHAVE_PAGARME_CRIPTOGRAFIA_PUBLICA = 'CHAVE_PAGARME_CRIPTOGRAFIA_PUBLICA'
+
+# Para validar telefones no Brasil
+PHONENUMBER_DEFAULT_REGION = 'BR'

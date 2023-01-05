@@ -17,9 +17,11 @@ from django.contrib import admin
 from django.urls import path, include
 from primeira_app import urls as primeira_app_urls
 from usuarios_app import urls as usuarios_app_urls
+from carrinho_app import urls as carrinho_app_urls
 
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("", include(usuarios_app_urls)),
     path("", include(primeira_app_urls)),
+    path("", include(carrinho_app_urls))
 ]
