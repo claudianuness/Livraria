@@ -1,7 +1,9 @@
-from django.views.generic.edit import CreateView
-from django.contrib.auth.models import User
-from .forms import UsuarioForm
+from django.http import HttpResponseRedirect
 from django.urls import reverse_lazy
+from django.views.generic.edit import CreateView
+
+from mysite.settings import LOGIN_REDIRECT_URL
+from .forms import UsuarioForm
 
 
 # Create your views here.
@@ -10,14 +12,14 @@ class CriarUsuario(CreateView):
     form_class = UsuarioForm
     success_url = reverse_lazy('login')
 
+    def dispatch(self, request, *args, **kwargs):
+        if self.request.user.is_authenticated:
+            return HttpResponseRedirect(LOGIN_REDIRECT_URL)
+        return super().dispatch(request, *args, **kwargs)
+
     def get_context_data(self, *args, **kwargs):
         context = super().get_context_data(*args, **kwargs)
 
         context['title'] = 'Create User'
         context['bootom'] = 'Register'
         return context
-
-
-from django.shortcuts import render
-
-# Create your views here.
