@@ -13,3 +13,12 @@ crispy forms: python -m pip install django-crispy-forms
 decouple: python -m pip install python-decouple
 
 pagarme: python -m pip install django_pagarme
+
+
+# Comandos úteis
+
+criar projeto: django-admin startproject nome-do-projeto
+
+criar aplicativo: python manage.py startapp nome-do-app
+
+criar usuário admin: python manage.py createsuperuser 
