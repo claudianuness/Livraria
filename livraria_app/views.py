@@ -16,22 +16,16 @@ def listagem(request):
     dados = {"livros": Livro.objects.all()}
     return render(request, "primeira_app/listagem.html", dados)
 
-def busca(request):
-
 def buscar_no_google_books(search: str) -> dict:
     params = {
         "key": GOOGLE_API_KEY,
         "q": f"isbn:{search}"
     }
 
-    if 'busca' in request.POST:
-        busca = request.POST['busca']
-        dados = {"busca": busca, "livros": Livro.objects.filter(titulo__icontains=busca)}
-        return render(request, "livraria_app/busca.html", dados)
-    else:
-        return render(request, "livraria_app/busca.html", {})
     r = requests.get(f"{GOOGLE_BOOKS_URL}/volumes/", params=params)
     r_json = r.json()
+
+    return r_json.get("items")
 
 
 def buscar(request):
@@ -52,7 +46,7 @@ def buscar(request):
         "resultado": resultado,
         "resultado_titulo": resultado_titulo,
     }
-    return render(request, "primeira_app/busca.html", contexto)
+    return render(request, "livraria_app/busca.html", contexto)
 def criar(request):
     dados = {}
     form = LivroForm(request.POST or None)
