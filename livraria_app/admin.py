@@ -1,5 +1,5 @@
 from django.contrib import admin
-from primeira_app.models import Autor, Categoria, Livro
+from livraria_app.models import Autor, Categoria, Livro
 
 
 @admin.register(Autor)
