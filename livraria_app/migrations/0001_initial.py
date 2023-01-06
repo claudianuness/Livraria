@@ -97,14 +97,14 @@ class Migration(migrations.Migration):
                         verbose_name="ISBN",
                     ),
                 ),
-                ("autor", models.ManyToManyField(to="primeira_app.autor")),
+                ("autor", models.ManyToManyField(to="livraria_app.autor")),
                 (
                     "categoria",
                     models.ForeignKey(
                         blank=True,
                         null=True,
                         on_delete=django.db.models.deletion.CASCADE,
-                        to="primeira_app.categoria",
+                        to="livraria_app.categoria",
                         verbose_name="Categoria",
                     ),
                 ),
