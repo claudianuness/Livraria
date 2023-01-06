@@ -16,6 +16,16 @@ def listagem(request):
     dados = {"livros": Livro.objects.all()}
     return render(request, "primeira_app/listagem.html", dados)
 
+def busca(request):
+
+
+    if 'busca' in request.POST:
+        busca = request.POST['busca']
+        dados = {"busca": busca, "livros": Livro.objects.filter(titulo__icontains=busca)}
+        return render(request, "livraria_app/busca.html", dados)
+    else:
+        return render(request, "livraria_app/busca.html", {})
+
 def buscar_no_google_books(search: str) -> dict:
     params = {
         "key": GOOGLE_API_KEY,
