@@ -2,6 +2,7 @@ from django.http import HttpResponseRedirect
 from django.urls import reverse_lazy
 from django.views.generic.edit import CreateView
 from django.shortcuts import render
+import requests
 
 from mysite.settings import LOGIN_REDIRECT_URL
 from .forms import UsuarioForm, CarrinhoForm
@@ -49,3 +50,16 @@ def cart_items(request, pk):
 
     context = {'object_list': carts, 'total': total}
     return render(request, template_name, context)
+
+
+def cep_endereco(request):
+    cep = 52051070
+    cep = cep.replace("-", "").replace(".", "").replace(" ", "").replace(",", "")
+
+    if len(cep) == 8:
+        link = f'https://viacep.com.br/ws/{cep}/json/'
+        requisicao = requests.get(link)
+        endereco = requisicao.json()
+        print(endereco)
+    else:
+        print("CEP Inválido!")
