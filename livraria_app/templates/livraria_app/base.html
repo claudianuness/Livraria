@@ -39,16 +39,16 @@
                 <a class="nav-link" href="#">{{ request.user }}</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{% url 'url_logout'%}">Logout</a>
+                <a class="nav-link" href="{% url 'logout'%}">Logout</a>
             </li>
 
             {% else %}
 
             <li class="nav-item">
-                <a class="nav-link" href="{% url 'login'%}">Login</a>
+                <a class="nav-link" href="{% url 'url_login'%}">Login</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{% url 'url_registrar'%}">Cadastre-se</a>
+                <a class="nav-link" href="{% url 'registrar'%}">Cadastre-se</a>
             </li>
             {% endif %}
         </ul>
