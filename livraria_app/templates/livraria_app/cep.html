@@ -6,5 +6,24 @@
     {% endblock %}
 
     {% block content %}
-     <p>Endereço: {{ cep }}</p>
+{% if cep %}
+        <h1 class="display-4"> Digite um cep </h1>
+        <form class="d-flex" method="POST" action="{% url 'url_cep' %}">
+            {% csrf_token %}
+            <input class="" type="search" placeholder="Search" aria-label="Search" name="cep-usuario">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
+        </form>
+        <p>Endereço: {{ cep }}</p>
+
+    {% else %}
+        <h1 class="display-4"> Digite um cep </h1>
+    <form class="d-flex" method="POST" action="{% url 'url_cep' %}">
+       {% csrf_token %}
+       <input class="" type="search" placeholder="Search" aria-label="Search" name="cep-usuario">
+       <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
+   </form>
+    {% endif  %}
+
+
+
     {% endblock %}

@@ -17,8 +17,6 @@ def listagem(request):
     return render(request, "livraria_app/listagem.html", dados)
 
 def busca(request):
-
-
     if 'busca' in request.POST:
         busca = request.POST['busca']
         dados = {"busca": busca, "livros": Livro.objects.filter(titulo__icontains=busca)}
