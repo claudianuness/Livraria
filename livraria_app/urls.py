@@ -1,5 +1,5 @@
 from django.urls import path
-from primeira_app import views
+from livraria_app import views
 
 urlpatterns = [
     path("", views.home, name="url_home"),

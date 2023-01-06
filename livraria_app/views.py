@@ -9,13 +9,14 @@ from mysite.settings import GOOGLE_BOOKS_URL, GOOGLE_API_KEY
 
 def home(request):
     dados = {"agora": datetime.now()}
-    return render(request, "primeira_app/home.html", dados)
+    return render(request, "livraria_app/home.html", dados)
 
 
 def listagem(request):
     dados = {"livros": Livro.objects.all()}
     return render(request, "primeira_app/listagem.html", dados)
 
+def busca(request):
 
 def buscar_no_google_books(search: str) -> dict:
     params = {
@@ -23,10 +24,15 @@ def buscar_no_google_books(search: str) -> dict:
         "q": f"isbn:{search}"
     }
 
+    if 'busca' in request.POST:
+        busca = request.POST['busca']
+        dados = {"busca": busca, "livros": Livro.objects.filter(titulo__icontains=busca)}
+        return render(request, "livraria_app/busca.html", dados)
+    else:
+        return render(request, "livraria_app/busca.html", {})
     r = requests.get(f"{GOOGLE_BOOKS_URL}/volumes/", params=params)
     r_json = r.json()
 
-    return r_json.get("items")
 
 def buscar(request):
     form = BuscarForm(request.POST or None)
@@ -56,7 +62,7 @@ def criar(request):
         return redirect("url_listagem")
 
     dados["form"] = form
-    return render(request, "primeira_app/form.html", dados)
+    return render(request, "livraria_app/form.html", dados)
 
 
 def update(request, pk):
@@ -70,7 +76,7 @@ def update(request, pk):
 
     dados["form"] = form
     dados["livro"] = livro
-    return render(request, "primeira_app/form.html", dados)
+    return render(request, "livraria_app/form.html", dados)
 
 
 def delete(request, pk):
