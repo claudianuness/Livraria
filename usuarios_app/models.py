@@ -63,25 +63,9 @@ class Endereco(models.Model):
 
 class Cliente(models.Model):
 
-    SEXO_CHOICES = (
-        ('M', u'Masculino'),
-        ('F', u'Feminino'),
-        ('I', u'Intersexo'),
-        ('N', u'Não declarar'),
-    )
-
-    ESTADO_CIVIL_CHOICES = (
-        ('S', u'Solteiro'),
-        ('C', u'Casado'),
-        ('D', u'Divorciado'),
-        ('V', u'Viúvo'),
-    )
-
     nome = models.CharField("Nome Completo", max_length=200)
     data_nascimento = models.DateField("Data nascimento", blank=True, null=True)
     cpf = models.CharField("CPF", max_length=120, null=True)
-    sexo = models.CharField("Sexo", max_length=1, choices=SEXO_CHOICES)
-    estado_civil = models.CharField("Estado civil", max_length=1, choices=ESTADO_CIVIL_CHOICES)
     endereco = models.ForeignKey(Endereco, on_delete=models.CASCADE, verbose_name="Endereco", blank=True, null=True)
     email = models.EmailField("Email", blank=True, null=True)
     telefone = models.CharField("Nº telefone celular", max_length=11, blank=True, null=True)
