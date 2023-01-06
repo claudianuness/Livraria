@@ -14,7 +14,7 @@ def home(request):
 
 def listagem(request):
     dados = {"livros": Livro.objects.all()}
-    return render(request, "primeira_app/listagem.html", dados)
+    return render(request, "livraria_app/listagem.html", dados)
 
 def busca(request):
 
