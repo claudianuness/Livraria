@@ -1,15 +1,73 @@
 {% extends 'livraria_app/base.html' %}
-    
+    {% load static %}
 {% block title %}
    <title>Form</title>
+    <link rel="stylesheet" href="{% static 'CSS/form.css' %}">
 {% endblock %}
 
 {% block content %}
-    <div >
+     <div class="container py-4">
+        <form>
+            {% csrf_token %}
+            <div class="row py-2">
+                <div class="col" >
+                    <label for="id_titulo">Título</label>
+                    {{ form.titulo }}
+
+                </div>
+              <div class="col">
+                    <label for="id_isbn">ISBN</label>
+                    {{ form.isbn }}
+              </div>
+            </div>
+            <div class="row py-2">
+                <div class="col-4">
+                    <label for="id_autor">Autor</label>
+                    {{ form.autor }}
+                </div>
+                <div class="col">
+                    <label for="id_data_publicacao">Lançamento</label>
+                    {{ form.data_publicacao }}
+                </div>
+                 <div class="col">
+                    <label for="id_genero">Genero</label>
+                    {{ form.genero }}
+                </div>
+                 <div class="col">
+                    <label for="id_categoria">Categoria</label>
+                    {{ form.categoria }}
+                </div>
+            </div>
+             <div class="row py-2">
+              <div class="col-4">
+                    <label for="id_descricao">Descrição</label>
+                    {{ form.descricao }}
+              </div>
+                 <div class="col">
+                    <label for="id_edicao">Edição</label>
+                    {{ form.edicao }}
+                </div>
+                 <div class="col">
+                    <label for="id_editora">Editora</label>
+                    {{ form.editora }}
+                </div>
+            </div>
+            <div class="row py-2">
+                 <div class="col-3">
+                    <label for="id_valor">Preço</label>
+                    {{ form.valor }}
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary"> Salvar </button>
+        </form>
+    </div>
+    <!--  <div>
         <form>
             {% csrf_token %}
             {{ form.as_p }}
-              <button type="submit" class="btn btn-primary"> Salvar </button>
+            <button type="submit" class="btn btn-primary"> Salvar </button>
         </form>
     </div>
+    -->
+
     {% endblock %}
