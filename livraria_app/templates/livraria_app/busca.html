@@ -8,17 +8,31 @@
        {% if busca %}
         <h1 class="display-4"> Você procurou por {{ busca }} </h1>
         <h1 class="display-4">Livros:</h1>
-        <ul>
+        <div class="container">
+        <div class="row my-2">
         {% for livro in livros %}
-            <li><a href="{% url 'url_update' livro.id %}">{{livro.titulo}} - {{livro.valor}}</a></li>
-            <ul>
-            {% for autor in livro.autor.all %}
-                <li>{{autor.nome}}</li>
-                {% endfor %}
-            </ul>
-
-            {% endfor %}
-        </ul>
+            <div class="col-3">
+                <div class="card">
+                  <img src="..." class="card-img-top" alt="...">
+                  <div class="card-body">
+                    <h5 class="card-title">{{livro.titulo}}</h5>
+                    <p class="card-text">${{livro.valor}}</p>
+                  </div>
+                  <ul class="list-group list-group-flush">
+                    <h5 class="card-title px-2"> Autores </h5>
+                        {% for autor in livro.autor.all %}
+                        <li class="list-group-item"> {{autor.nome}}</li>
+                        {% endfor %}
+                  </ul>
+                  <div class="card-body d-flex justify-content-end">
+                        <a href="{% url 'url_update' livro.id%}"><button class="btn btn-outline-primary mx-1"> Editar </button></a>
+                        <a href="{% url 'url_delete' livro.id%}"><button class="btn btn-outline-danger"> Deletar </button></a>
+                  </div>
+                </div>
+            </div>
+         {% endfor %}
+        </div>
+    </div>
     {% else %}
         <h1 class="display-4"> Faça uma busca </h1>
     {% endif  %}
