@@ -4,8 +4,22 @@ from django.views.generic.edit import CreateView
 from django.shortcuts import render
 
 from mysite.settings import LOGIN_REDIRECT_URL
-from .forms import UsuarioForm, CarrinhoForm
+from .forms import UsuarioForm, CarrinhoForm, UserUpdateForm
 from .models import Cliente, Carrinho, Shop
+
+
+def atualizarUsuario(request):
+    if request.method == 'POST':
+        u_form = UserUpdateForm(request.POST,instance=request.user)
+        if p_form.is_valid() and u_form.is_valid():
+            p_form.save()
+            messages.success(request,'Your Profile has been updated!')
+            return redirect('profile')
+    else:
+        u_form = UserUpdateForm(instance=request.user.profile)
+
+    context={'u_form': u_form}
+    return HttpResponseRedirect(LOGIN_REDIRECT_URL)
 
 
 class CriarUsuario(CreateView):

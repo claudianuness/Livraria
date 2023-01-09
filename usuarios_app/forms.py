@@ -5,6 +5,7 @@ from django.contrib.auth.forms import UserCreationForm
 from .models import Carrinho
 
 
+
 class UsuarioForm(UserCreationForm):
     email = forms.EmailField(max_length=100)
 
@@ -17,3 +18,8 @@ class CarrinhoForm(ModelForm):
     class Meta:
         model = Carrinho
         fields = ["produto", "quantidade"]
+
+class UserUpdateForm(forms.ModelForm):
+    class Meta:
+        model=User
+        fields=['username','email']
