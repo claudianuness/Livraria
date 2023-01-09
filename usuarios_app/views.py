@@ -37,7 +37,7 @@ def shopping_items_add(request):
 
     dados["form"] = form
 
-    return render(request, "primeira_app/form.html", dados)
+    return render(request, "livraria_app/form.html", dados)
 
 
 def cart_items(request, pk):

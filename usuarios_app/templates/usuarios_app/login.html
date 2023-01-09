@@ -1,4 +1,4 @@
-{% extends 'primeira_app/base.html' %}
+{% extends 'livraria_app/base.html' %}
 
 {% load static %}
 
@@ -31,11 +31,22 @@
 
             {{ form|crispy }}
 
-            <button type="submit" class="btn btn-primary">Entrar</button>
-            <div><small>Não tem cadastro? <a class="" href="{% url 'url_registrar'%}">cadastre-se</a></small>
-            </div>
 
-            <a class="" href="{% url 'url_registrar'%}">esqueceu a senha?</a>
+            <div class="row">
+                <div class="col">
+                    <button type="submit" class="btn btn-primary">Entrar</button>
+                    <div class="form-check">
+                        <input type="checkbox" name="rememberme" id="rememberme" class="form-check-input">
+                        <small for="rememberme" class="form-check-label">Matenha-me conectado!</small>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <small>Não tem cadastro? <a class="" href="{% url 'url_registrar'%}">cadastre-se</a></small>
+            </div>
+            <a class="" href="{% url 'url_registrar'%}"><small>Esqueci minha senha</small></a>
+
+
 
 
 

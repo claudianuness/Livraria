@@ -6,7 +6,7 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ("primeira_app", "0002_alter_livro_options_alter_livro_valor"),
+        ("livraria_app", "0002_alter_livro_options_alter_livro_valor"),
     ]
 
     operations = [

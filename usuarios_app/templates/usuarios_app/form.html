@@ -1,4 +1,4 @@
-{% extends 'primeira_app/base.html' %}
+{% extends 'livraria_app/base.html' %}
 
 {% load static %}
 
@@ -25,7 +25,7 @@
             <hr>
         <form method="POST">
 
-            # validação dos dados
+            <!-- validação dos dados -->
             {% csrf_token %}
 
             {{ form|crispy }}
