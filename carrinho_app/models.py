@@ -1,4 +1,5 @@
 from django.db import models
+from cpf_field.models import CPFField
 
 class Autor(models.Model):
     nome = models.CharField("Nome Completo", max_length=200)
@@ -61,11 +62,12 @@ class Endereco(models.Model):
 
 class Cliente(models.Model):
 
-    nome = models.CharField("Nome Completo", max_length=200)
+    nome = models.CharField("Nome completo", max_length=200)
+    nome_usuario = models.CharField("Nome social", max_length=200)
     data_nascimento = models.DateField("Data nascimento", blank=True, null=True)
-    cpf = models.CharField("CPF", max_length=120, null=True)
+    cpf = CPFField("CPF")
     endereco = models.ForeignKey(Endereco, on_delete=models.CASCADE, verbose_name="Endereco", blank=True, null=True)
-    email = models.EmailField("Email", blank=True, null=True)
+    email = models.EmailField("E-mail", blank=True, null=True)
     telefone = models.CharField("Nº telefone celular", max_length=11, blank=True, null=True)
 
     def __str__(self):
