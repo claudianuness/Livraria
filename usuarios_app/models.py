@@ -52,17 +52,18 @@ class Livro(models.Model):
 
 
 class Endereco(models.Model):
+    nome = models.CharField("Nome Completo", max_length=200, null=True)
+    telefone = models.CharField("Nº telefone celular", max_length=11, blank=True, null=True)
     rua = models.CharField("Rua", max_length=200, null=True)
     numero = models.IntegerField("Número", null=True)
     bairro = models.CharField("Bairro", max_length=100, null=True)
     cidade = models.CharField("Cidade", max_length=50, null=True)
     estado = models.CharField("Estado", max_length=100, null=True)
     cep = models.IntegerField("CEP", null=True)
-    pais = models.CharField("Cidade", max_length=50, null=True)
+    complemento = models.CharField("Complemento", max_length=100, null=True)
 
 
 class Cliente(models.Model):
-
     nome = models.CharField("Nome Completo", max_length=200)
     data_nascimento = models.DateField("Data nascimento", blank=True, null=True)
     cpf = models.CharField("CPF", max_length=120, null=True)
